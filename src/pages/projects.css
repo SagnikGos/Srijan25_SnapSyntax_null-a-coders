@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.heading{
+    margin-bottom: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.heading-text{
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    /* background: red; */
+    padding: 0.2rem 0rem;
+    text-align: left;
+    width: 50%;
+    
+}
+
+.project {
+    width: calc(100% - 4rem);
+}
+
+.project-item {
+    /* background-color: #a329e525; */
+    display: flex;
+    flex-direction: row;
+    padding: 0.8rem;
+    height: 20vh;
+    margin-bottom: 1rem;
+    width: 100%;
+    /* padding: 0rem 2rem; */
+
+    /* border-radius: 1rem; */
+
+    align-items: center;
+}
+
+.project-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.project-pic-container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.project-item:nth-child(even) .project-pic-container {
+    align-items: flex-start;
+}
+
+.project-pic {
+    height: calc(20vh - 2rem);
+    padding: 20;
+    aspect-ratio: 1.778;
+    object-fit: cover;
+}
+
+.project-details {
+    width: 50%;
+    height: calc(20vh - 2rem);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* justify-content: space-between; */
+}
+
+.project-item:nth-child(even) .project-details {
+    align-items: flex-end;
+}
+
+.project-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    background: black;
+    padding: 0.2rem 0.8rem;
+    text-align: center;
+}
+
+.project-date {
+    font-size: 1rem;
+    /* font-weight:400; */
+    color: white;
+    /* background: black; */
+    padding: 0.2rem 0.8rem;
+    /* text-align: center; */
+}
