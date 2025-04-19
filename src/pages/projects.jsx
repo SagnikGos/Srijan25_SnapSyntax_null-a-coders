@@ -72,4 +72,4 @@ function Projects() {
     </div>;
 }
 
-export default App;
+export default Projects;

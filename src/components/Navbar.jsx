@@ -1,21 +1,47 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+
 
 const navLinks = [
   { name: 'Home', href: '#' },
   { name: 'About', href: '#' },
   { name: 'Techstack', href: '#' },
   { name: 'Projects', href: '#' }
-
 ];
 
 const FloatingNavbar = () => {
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
+  const scrollThreshold = 50;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY.current && currentScrollY > scrollThreshold) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <nav
-      className="
+      className={`
         fixed
         top-5
         left-1/2
+        transform
         -translate-x-1/2
+
         z-50
         bg-purple-300
         text-white
@@ -23,7 +49,10 @@ const FloatingNavbar = () => {
         py-2
         rounded-full
         shadow-lg
-      "
+
+        transition-transform duration-300 ease-in-out
+        ${isVisible ? 'translate-y-0' : '-translate-y-[calc(100%+1.25rem)]'}
+      `}
       aria-label="Main navigation"
     >
       <ul className="flex items-center space-x-6">
